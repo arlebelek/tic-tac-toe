@@ -8,7 +8,7 @@ var boxStyle = {
   'width':'100px'
 };
 
-
+var timerValue=300;
 
 var Box = React.createClass({
     //step 4
@@ -18,21 +18,14 @@ var Box = React.createClass({
         };
     },
     
-    //step 5 
-    componentWillMount: function(){
-       var oldthis = this;
-       this.timer = setInterval(function(){
-       
-       var old = oldthis.state.value;
-       var newV = old === 'X' ? 'O': 'X';
-       oldthis.setState({
-       value: newV
-       });
-       }, 300);
-       },
-           
-       componentWillUnmount: function(){
-   clearInterval(this.timer);},
+    //step 6
+    handleClick: function(){
+        var old = this.state.value;
+        var newV = oldValue === 'X' ? 'O': 'X';
+        this.setState({
+        value: newV
+        });
+ 
     
   /**
    * Render a HTML button
@@ -40,7 +33,7 @@ var Box = React.createClass({
    */
   'render': function onRender () {
     return (
-      <button style={boxStyle}>{this.state.value}</button>
+      <button style={boxStyle} onClick={this.handleClick}>{this.state.value}</button>
     );
   }
 });
